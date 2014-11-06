@@ -3,6 +3,7 @@ use strict;
 use warnings;
 use utf8;
 use Amon2::Web::Dispatcher::RouterBoom;
+use Data::Dumper;
 
 any '/' => sub {
     my ($c) = @_;
@@ -14,16 +15,23 @@ any '/' => sub {
     });
 };
 
-post '/reset_counter' => sub {
-    my $c = shift;
-    $c->session->remove('counter');
-    return $c->redirect('/');
+get '/teacher' => sub{
+  my ($c) = @_;
+  return $c->render('register.tx');
 };
 
-post '/account/logout' => sub {
-    my ($c) = @_;
-    $c->session->expire();
-    return $c->redirect('/');
+get '/list' => sub{
+ my ($c) = @_;
+ my @teachers = $c->db->teacher_list;
+ return $c->render('teacher.tx',{teachers => \@teachers});
+};
+
+post 'teacher/register' => sub{
+  my ($c) = @_;
+  my $req = $c->req->{'amon2.body_parameters'};
+  print Dumper $req;
+  $c->db->insert_teacher($req);
+  return $c->redirect('/teacher');
 };
 
 1;
