@@ -2,16 +2,18 @@
 
 : override content -> {
 
-<h1>教師登録</h1>
+<h1>生徒登録</h1>
 
-<form method="post" action="<: uri_for('teacher/register') :>">
+<form method="post" action="<: uri_for('student/register') :>">
  <dl>
    <dt>お名前</dt>
    <dd><input type="text" name="name" size="80 class="validate required"></dd>
    <dt>フリガナ</dt>
    <dd><input type="text" name="furi" size="80"></dd>
-   <dt>大学名</dt>
-   <dd><input type="text" name="colledge" size="80"></dd>
+   <dt>小学・中学・高校名</dt>
+   <dd><input type="text" name="school" size="80"></dd>
+   <dt>年齢</dt>
+   <dd><input type="text" name="age" size="80"></dd>
    <dt>メールアドレス</dt>
    <dd><input type="text" name="mail" size="80" class="validate mail"></dd>
    <dt>メールアドレス（確認）</dt>

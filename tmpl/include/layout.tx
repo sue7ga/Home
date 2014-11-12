@@ -9,6 +9,13 @@
     <meta name="format-detection" content="telephone=no" />
     <script src="<: uri_for('/static/js/jquery-2.1.0.min.js') :>"></script>
     <link href="<: uri_for('/static/bootstrap/css/bootstrap.css') :>" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery.leanModal.min.js"></script>
+    <script type="text/javascript">
+		$(function() {
+			$('a[rel*=leanModal]').leanModal({ top : 200, closeButton: ".modal_close" });		
+		});
+    </script>
     <script src="<: uri_for('/static/bootstrap/js/bootstrap.js') :>"></script>
     <script src="<: uri_for('/static/js/es5-shim.min.js') :>"></script>
     <script src="<: uri_for('/static/js/micro_template.js') :>"></script>
@@ -32,9 +39,10 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
+                    <li><a href="/register">教師登録</a></li>
+                    <li><a href="/list">教師一覧表示</a></li>
+                    <li><a href="/student">生徒一覧</a></li>
+                   <li><a href="/studentregister">生徒登録</a></li>
                 </ul>
             </div>
         </div><!-- /.container -->

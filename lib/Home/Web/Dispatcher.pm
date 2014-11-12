@@ -15,7 +15,7 @@ any '/' => sub {
     });
 };
 
-get '/teacher' => sub{
+get '/register' => sub{
   my ($c) = @_;
   return $c->render('register.tx');
 };
@@ -26,10 +26,27 @@ get '/list' => sub{
  return $c->render('teacher.tx',{teachers => \@teachers});
 };
 
+get '/student' => sub{
+ my ($c) = @_;
+ my @students = $c->db->student_list;
+ return $c->render('student.tx',{students => \@students});
+};
+
+get '/studentregister' => sub{
+ my ($c) = @_;
+ return $c->render('studentregister.tx');
+};
+
+post 'student/register' => sub{
+  my ($c) = @_;
+  my $req = $c->req->{'amon2.body_parameters'};
+  $c->db->insert_student($req);
+  return $c->redirect('/student');
+};
+
 post 'teacher/register' => sub{
   my ($c) = @_;
   my $req = $c->req->{'amon2.body_parameters'};
-  print Dumper $req;
   $c->db->insert_teacher($req);
   return $c->redirect('/teacher');
 };

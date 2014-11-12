@@ -1,0 +1,31 @@
+: cascade "include/layout.tx"
+
+: override content -> {
+
+ <table class="table">
+  <thead>
+    <tr>
+      <th>生徒名</th>
+      <th>フリガナ</th>
+      <th>小学・中学・高校名</th>
+      <th>年齢</th>
+      <th>メールアドレス</th>
+      <th>詳細</th>
+    </tr>
+  </thead>
+  <tbody>
+   : for $students -> $student{
+      <tr>
+        <td><: $student.name :></td>
+        <td><: $student.furi :></td>
+        <td><: $student.school :></td>
+        <td><: $student.age :></td>
+        <td><: $student.mailaddress :></td>
+        <td><a type="button" id="test_button" rel="leanModal" href="#test_popup" class="btn btn-primary">詳細を見る</button></td>
+      </tr>
+   : }
+  </tbody>
+ </table>
+
+ 
+:} 

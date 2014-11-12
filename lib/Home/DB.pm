@@ -19,9 +19,30 @@ sub teacher_list{
  return @teachers;
 }
 
+sub student_list{
+ my ($self) = @_;
+ my @students = $self->search(
+   'student',
+    {},
+    {order_by => {'id' => 'DESC'}}
+ );
+ return @students;
+}
+
+sub insert_student{
+ my($self,$param) = @_;
+ $self->insert('student',{
+    name => $param->{name},
+    furi => $param->{furi},
+    school => $param->{school},
+    age => $param->{age},
+    mailaddress => $param->{mail},
+    sex => $param->{sex}
+ });
+}
+
 sub insert_teacher{
  my($self,$param) = @_;
- print Dumper $param;
  $self->insert('teacher',{ 
    college => $param->{colledge},
    teachername => $param->{name},
